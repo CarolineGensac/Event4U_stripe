@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:format])
   end
 
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :description, :first_name, :last_name)
+  end
+  
 private
 
   def authenticate_user
